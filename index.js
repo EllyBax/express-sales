@@ -1,4 +1,6 @@
 const main = document.getElementById("main");
+const header = document.getElementById("header");
+const heroText = document.getElementById("heroText");
 const form = document.getElementById("form");
 const table = document.getElementById("table");
 const amount = document.getElementById("amount");
@@ -8,6 +10,11 @@ const addEntry = document.getElementById("addEntry");
 let id = 1;
 const currentDate = new Date();
 
+document.addEventListener("DOMContentLoaded", () => {
+  let headerHeight = header.scrollHeight;
+  main.style.paddingTop = `${headerHeight}px`;
+});
+
 form.style.display = "none";
 form.style.transition = "all 1s .5s ease";
 addEntry.addEventListener("click", (event) => {
@@ -16,22 +23,24 @@ addEntry.addEventListener("click", (event) => {
   form.style.display = "flex";
 });
 
+heroText.innerText = `Sales Records for ${formatDate(currentDate)}`;
+
 function fillTable(event) {
   event.preventDefault();
-  if (total.value === "" || item.value === "") {
+  // Trim the input values to remove leading/trailing whitespace
+  const totalValue = total.value.trim();
+  const itemValue = item.value.trim();
+  const amountValue = amount.value.trim();
+
+  if (totalValue === "" || itemValue === "" || amountValue === "") {
     const errDiv = document.createElement("div");
     errDiv.innerHTML = `
           <div class="errDiv">
-            <h1>Err: "Can't log empty fields"</h1>
+            <h1>Err: "Cant log empty field"</h1>
           </div>`;
     main.appendChild(errDiv);
-    // console.log("Can't log empty fields");
     setTimeout(() => {
-      errDiv.style.opacity = "0";
-      errDiv.style.transition = "all 1s ease-in-out";
-      setTimeout(() => {
         errDiv.remove();
-      }, 1000);
     }, 2000);
   } else {
     const tr = document.createElement("tr");
@@ -39,17 +48,14 @@ function fillTable(event) {
     const td2 = document.createElement("td");
     const td3 = document.createElement("td");
     const td4 = document.createElement("td");
-    const td5 = document.createElement("td");
     td1.innerText = id;
-    td2.innerText = item.value;
-    td3.innerText = amount.value;
-    td4.innerText = total.value;
-    td5.innerText = formatDate(currentDate);
+    td2.innerText = itemValue; // Use trimmed value
+    td3.innerText = amountValue; // Use trimmed value
+    td4.innerText = totalValue; // Use trimmed value
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.appendChild(td3);
     tr.appendChild(td4);
-    tr.appendChild(td5);
     table.appendChild(tr);
     tr.setAttribute("id", id);
 
@@ -59,7 +65,9 @@ function fillTable(event) {
 
     setTimeout(() => {
       form.style.opacity = "0";
-      form.style.display = "none";
+      setTimeout(() => {
+        form.style.display = "none";
+      }, 1000);
     }, 2000);
 
     id++;
@@ -125,8 +133,9 @@ function deleteEntry(event) {
     setTimeout(() => {
       document.getElementById("deleteMessage").style.opacity = "0";
       document.getElementById("deleteMessage").style.transition = "all 1s ease";
-      document.getElementById("deleteMessage").style.display = "none";
-      // document.getElementById("deleteMessage").style.display = "none";
+      setTimeout(() => {
+        document.getElementById("deleteMessage").style.display = "none";
+      }, 1000);
     }, 2000);
   }
   elementToDelete.remove();
