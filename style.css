@@ -1,0 +1,168 @@
+html{
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), #000000e4),
+    url("https://images.pexels.com/photos/6476574/pexels-photo-6476574.jpeg?auto=compress&cs=tinysrgb&w=600")
+      fixed no-repeat;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(3px);
+  color: #bdc3c9;
+}
+
+/* .overlay{
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(3px);
+  z-index: -9;
+} */
+
+header {
+  padding: 0.5rem 1rem;
+  background: #666363bb;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  justify-content: space-between;
+  backdrop-filter: blur(3px);
+  top: 0;
+  position: sticky;
+}
+
+.errDiv {
+  margin: 0;
+  padding: 1rem;
+  background-color: #f44336; /* Red */
+  color: #fff; /* White text color */
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.toUp {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid #a6abb0;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.toUp:hover {
+  border-bottom: 30px solid #fff;
+}
+main {
+  padding: 1rem;
+  height: 90vh;
+  /* background: #335; */
+}
+
+table {
+  background: rgb(3, 3, 255);
+  min-width: 50vw;
+  margin: 0 auto;
+  /* padding: .3rem; */
+}
+
+/* Define a base color for th and td */
+th,
+td {
+  border: 1px solid;
+  padding: 0.4rem;
+  color: #111;
+}
+
+/* Apply the base color to th */
+th {
+  background: rgb(126, 126, 250);
+}
+
+/* Apply a lighter shade to td cells */
+td {
+  background: rgba(
+    71,
+    71,
+    234,
+    0.6
+  ); /* Adjust the alpha value (0.8) to get the desired lightness */
+}
+
+.form {
+  background-color: #3a3636ae;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+  bottom: 4rem;
+  box-shadow: 0 2px 3px #555;
+  position: fixed;
+}
+
+.form input {
+  all: unset;
+  background: #222222b1;
+  border: 2px solid #333;
+  max-width: 30%;
+  height: 2rem;
+  border-radius: 20px;
+  padding: 0.5rem;
+}
+
+.form input[type="number"]::-webkit-inner-spin-button,
+.form input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  display: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form button {
+  all: unset;
+  background: #222;
+  border: 2px solid #333;
+  height: fit-content;
+  padding: 0.3rem 0.5rem;
+  border-radius: 20px;
+  width: 10%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.form button:hover {
+  background: #333;
+  box-shadow: 0 0 3px;
+  transform: scale(1.1);
+}
+
+footer {
+  padding: 0.5rem;
+  background: #222;
+  display: grid;
+  place-items: center;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+}
