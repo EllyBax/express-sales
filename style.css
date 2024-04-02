@@ -1,3 +1,24 @@
+@media(prefers-color-scheme: dark){
+  :root{
+  --main-bg: #121212;
+  --second-bg: #151616;
+  --clear-bg: #1f2022ab;
+  --main-text: #c3c7cd;
+  --second-text: #e1e4e8;
+}
+}
+
+@media(prefers-color-scheme: light){
+:root {
+ --main-bg: #f0f0f0; /* Light grey background */
+ --second-bg: #e0e0e0; /* Slightly darker grey for secondary backgrounds */
+ --clear-bg: #ffffffab; /* White background */
+ --main-text: #333333; /* Dark grey text */
+ --second-text: #666666; /* Slightly lighter grey for secondary text */
+}
+}
+
+
 html {
   overflow-x: hidden;
 }
@@ -6,78 +27,95 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), #000000e4),
-    url("https://images.pexels.com/photos/6476574/pexels-photo-6476574.jpeg?auto=compress&cs=tinysrgb&w=600")
-      fixed no-repeat;
-  background-size: cover;
+  background: var(--main-bg);
   font-family: "Poppins", sans-serif;
-  min-height: 90vh;
+  min-height: 100vh;
   width: 100vw;
-  backdrop-filter: blur(3px);
-  color: #bdc3c9;
+  color: var(--second-text);
 }
 
-/* .overlay{
-  content: "";
-  top: 0;
-  left: 0;
-  position: absolute;
-  min-height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(3px);
-  z-index: -9;
-} */
+main {
+  padding: 0 1rem 1rem 1rem; 
+  min-height: calc(
+    100vh - 2rem
+  ); /* Adjust according to header and footer height */
+  height: max-content;
+}
+
+/*  */
+#heroText {
+  color: var(--main-text);
+  text-align: center;
+}
 
 header {
-  padding: 0.5rem 1rem;
-  background: #666363bb;
-  display: flex;
+  position: fixed;
+  width: calc(100% - 3rem);
+  justify-content: space-evenly;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  justify-content: space-between;
-  backdrop-filter: blur(3px);
+  display: flex;
+  color: var(--second-text);
   top: 0;
-  position: sticky;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 1);
+  background: var(--clear-bg);
+  padding: 0 1.5rem;
+  backdrop-filter: blur(3px);
+  transition: all 1s ease;
+  z-index: 1000;
 }
+
+/* header:hover,
+.actions:hover {
+  background: rgba(33, 32, 32, 0.694);
+} */
 
 .errDiv {
   margin: 0;
   padding: 1rem;
-  background-color: #f44336; /* Red */
-  color: #fff; /* White text color */
+  background-color: #f44336;
+  color: #ddd;
   text-align: center;
   border: none;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1rem;
+  z-index: 1001;
 }
 
 .delEntry {
   all: unset;
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
   padding: 0.5rem;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.buttons {
+.history {
+  all: unset;
+  background-color: #064f11;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #666363bb;
-  bottom: 10rem;
+  background: var(--clear-bg);
+  color: var(--main-text);
   width: 80vw;
   padding: 2rem;
   border-radius: 10px;
+  transition: all 1s ease;
   margin: 2rem auto;
 }
 
 .addEntry {
   all: unset;
-  background-color: #3936f4; /* Red */
+  background-color: #3936f4;
   padding: 0.5rem;
   border-radius: 5px;
   cursor: pointer;
@@ -85,8 +123,8 @@ header {
 
 #entryChoice {
   all: unset;
-  background-color: #f44336; /* Red */
-  padding: 0.5rem;
+  background-color: #f44336;
+  padding: 0.4rem;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -94,31 +132,35 @@ header {
 .deleteMessage {
   margin: 1rem auto;
   border-radius: 5px;
-  padding: 1rem;
-  background: #2222229e;
+  padding: 2rem;
+  color: var(--main-text);
+  background: var(--second-bg);
   width: 70%;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  position: relative;
 }
 
-.deleteMessage {
-  position: relative;
-  /* This is necessary for the close button to be positioned relative to the form */
+#entryId {
+  background: var(--clear-bg);
+  border-radius: 7px;
+  width: 20%;
 }
 
 .closeButton {
   position: absolute;
-  top: 10px; /* Adjust as needed */
-  right: 10px; /* Adjust as needed */
+  top: 10px;
+  right: 10px;
   background: none;
   border: none;
-  font-size: 20px; /* Adjust as needed */
+  font-size: 25px;
   cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
 .closeButton:hover {
-  color: red; /* Change color on hover for better visibility */
+  color: red;
 }
 
 .toUp {
@@ -126,68 +168,66 @@ header {
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-bottom: 30px solid #a6abb0;
+  border-bottom: 30px solid #000;
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
-.toUp:hover {
-  border-bottom: 30px solid #fff;
-}
-main {
-  padding: 1rem;
-  height: 90vh;
-  /* background: #335; */
-}
+/* .toUp:hover {
+  border-bottom: 30px solid #ddd;
+} */
 
 table {
-  background: rgb(3, 3, 255);
+  background: var(--main-text);
   min-width: 50vw;
   margin: 0 auto;
-  /* padding: .3rem; */
+  box-shadow: 0 0 2px;
+  color: var(--main-text);
 }
 
-/* Define a base color for th and td */
 th,
 td {
-  border: 1px solid;
-  padding: 0.4rem;
-  color: #111;
+  border: 2px solid transparent;
+  padding: 0 1rem;
+  color: var(--clear-text);
 }
 
-/* Apply the base color to th */
 th {
-  background: rgb(126, 126, 250);
+  transition: all 0.4s ease;
+  background: var(--second-bg);
 }
 
-/* Apply a lighter shade to td cells */
 td {
-  background: rgba(
-    71,
-    71,
-    234,
-    0.6
-  ); /* Adjust the alpha value (0.8) to get the desired lightness */
+  background: var(--clear-bg);
+  transition: all 0.4s ease;
+}
+
+td:hover,
+th:hover {
+  background: var(--main-text);
+  cursor: pointer;
+  color: var(--main-bg);
 }
 
 .form {
-  background-color: #3a3636ae;
+  color: var(--main-text);
+  background-color: var(--clear-bg);
   padding: 1rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 90vw;
   margin: 1rem auto;
-  box-shadow: 0 2px 3px #555;
+  box-shadow: 0 0 3px;
 }
 
 .form input,
 .deleteMessage input {
   all: unset;
-  background: #222222b1;
-  border: 2px solid #333;
-  max-width: 25%;
-  height: 2rem;
+  background: var(--second-bg);
+  border: 2px solid var(--main-bg);
+  max-width: 20%;
+  height: 1.5rem;
   border-radius: 20px;
   padding: 0.5rem;
 }
@@ -197,7 +237,6 @@ td {
 #entryId::-webkit-inner-spin-button,
 #entryId::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  display: none;
   margin: 0;
 }
 
@@ -208,30 +247,31 @@ input[type="number"],
 
 .form button {
   all: unset;
-  background: #222;
-  border: 2px solid #333;
+  background: var(--main-bg);
+  border: 1px solid var(--second-bg);
   height: fit-content;
-  padding: 0.3rem 0.5rem;
+  padding: 0.43rem 0.5rem;
   border-radius: 20px;
   width: 10%;
   text-align: center;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
-  will-change: transform;
 }
 
 .form button:hover {
-  background: #333;
+  background: var(--clear-bg);
   box-shadow: 0 0 3px;
-  transform: scale(1.1);
+  transform: scale(1.0);
 }
 
 footer {
-  padding: 0.5rem;
-  background: #222;
-  display: grid;
-  place-items: center;
+  position: fixed;
+  left: 0;
   bottom: 0;
   width: 100%;
-  position: fixed;
+  padding: 0.5rem;
+  background: var(--clear-bg);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
 }

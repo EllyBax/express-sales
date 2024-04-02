@@ -1,0 +1,91 @@
+@import url("https://fonts.cdnfonts.com/css/poppins");
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+main {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: #aaa;
+}
+
+h1 {
+  color: rgb(40, 245, 166);
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.loginForm {
+  background: #555;
+  padding: 1.5rem 2rem;
+  border: 1px transparent;
+  border-radius: 10px;
+  width: fit-content;
+  box-shadow: 0 2px 5px #333;
+  transition: all 1s ease;
+}
+
+.loginForm:hover{
+  background: #444;
+  box-shadow: 0 2px 5px #ddd;
+}
+
+.formcheck {
+  /* position: relative; */
+  margin-bottom: 1rem;
+}
+
+.formcheck label {
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  padding: 0.5rem;
+  transition: 0.3s ease;
+  pointer-events: none;
+  /* background: white; */
+}
+
+.formcheck input {
+  width: calc(100% - 1rem);
+  padding: 0.6rem;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+}
+
+#togglePassword {
+  margin-left: 10px;
+}
+
+#togglePassword {
+  cursor: pointer;
+}
+
+.formLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLinks button {
+  all: unset;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgb(78, 236, 93);
+  width: fit-content;
+  margin: 0.2rem auto;
+}
+
+a {
+  text-align: center;
+  color: rgb(10, 232, 110);
+}

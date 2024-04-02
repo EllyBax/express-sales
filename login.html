@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN MAUZO.COM</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <main>
+      <div class="loginForm" id="loginForm">
+        <h1>Welcome back!</h1>
+        <p>Fill in your details below</p>
+        <br />
+        <div class="formcheck">
+          <label for="name"> Email </label>
+          <input type="email" id="email" />
+        </div>
+        <div class="formcheck">
+          <label for="password"> Password </label>
+          <input type="password" id="password" />
+        </div>
+        <div style="margin-bottom: 1rem">
+          <input type="checkbox" id="togglePassword" />
+          <label for="togglePassword">Show Password</label>
+        </div>
+        <div class="formLinks">
+          <button type="submit" id="formButton" onclick="getUser()">
+            LOGIN
+          </button>
+          <a href="register.html">Don't have an account? Register</a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const formButton = document.getElementById("formButton");
+      const user = { Email: [], Password: [] }; // This object will store the user's email and password
+
+      function getUser() {
+        if (email.value.trim() && password.value.trim()) {
+          // Assign the email and password values to the user object
+          user.Email.push(email.value);
+          user.Password.push(password.value);
+
+          // Log the user object to see the updated values
+          console.log(user);
+
+          // Clear the input fields
+          email.value = "";
+          password.value = "";
+        } else {
+          console.log("Email or password cannot be empty.", user);
+        }
+        window.location.href = "./index.html";
+      }
+
+      document.getElementById("togglePassword").checked = false;
+      document
+        .getElementById("togglePassword")
+        .addEventListener("change", function (e) {
+          const passwordInput = document.getElementById("password");
+          if (e.target.checked) {
+            passwordInput.type = "text";
+          } else {
+            passwordInput.type = "password";
+          }
+        });
+    </script>
+  </body>
+</html>
