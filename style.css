@@ -1,4 +1,4 @@
-html{
+html {
   overflow-x: hidden;
 }
 
@@ -11,7 +11,7 @@ body {
       fixed no-repeat;
   background-size: cover;
   font-family: "Poppins", sans-serif;
-  min-height: 100vh;
+  min-height: 90vh;
   width: 100vw;
   backdrop-filter: blur(3px);
   color: #bdc3c9;
@@ -51,8 +51,74 @@ header {
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 1rem;
+  right: 1rem;
+}
+
+.delEntry {
+  all: unset;
+  background-color: #f44336; /* Red */
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #666363bb;
+  bottom: 10rem;
+  width: 80vw;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem auto;
+}
+
+.addEntry {
+  all: unset;
+  background-color: #3936f4; /* Red */
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#entryChoice {
+  all: unset;
+  background-color: #f44336; /* Red */
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.deleteMessage {
+  margin: 1rem auto;
+  border-radius: 5px;
+  padding: 1rem;
+  background: #2222229e;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.deleteMessage {
+  position: relative;
+  /* This is necessary for the close button to be positioned relative to the form */
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  background: none;
+  border: none;
+  font-size: 20px; /* Adjust as needed */
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: red; /* Change color on hover for better visibility */
 }
 
 .toUp {
@@ -111,29 +177,32 @@ td {
   align-items: center;
   justify-content: space-between;
   width: 90vw;
-  bottom: 4rem;
+  margin: 1rem auto;
   box-shadow: 0 2px 3px #555;
-  position: fixed;
 }
 
-.form input {
+.form input,
+.deleteMessage input {
   all: unset;
   background: #222222b1;
   border: 2px solid #333;
-  max-width: 30%;
+  max-width: 25%;
   height: 2rem;
   border-radius: 20px;
   padding: 0.5rem;
 }
 
 .form input[type="number"]::-webkit-inner-spin-button,
-.form input[type="number"]::-webkit-outer-spin-button {
+.form input[type="number"]::-webkit-outer-spin-button,
+#entryId::-webkit-inner-spin-button,
+#entryId::-webkit-outer-spin-button {
   -webkit-appearance: none;
   display: none;
   margin: 0;
 }
 
-input[type="number"] {
+input[type="number"],
+#entryId {
   -moz-appearance: textfield;
 }
 
