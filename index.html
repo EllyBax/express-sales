@@ -1,60 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      @import url("https://fonts.cdnfonts.com/css/poppins");
-    </style>
-    <title>Sales</title>
-  </head>
 
-  <body>
-    <header id="header">
-      <h1>MAUZO</h1>
-      <!-- <div class="toUp"></div> -->
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url("https://fonts.cdnfonts.com/css/poppins");
+  </style>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <title>Sales</title>
+</head>
 
-    <main id="main">
-      <h1 id="heroText"></h1>
-      <table id="table">
-        <tr>
-          <th>Entry</th>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Total</th>
-        </tr>
-      </table>
-
-      <form class="deleteMessage" id="deleteMessage">
-        <label for="entryId">Enter entry to Delete:</label>
-        <input type="number" placeholder="Number" id="entryId" />
-        <button type="submit" id="entryChoice">Delete</button>
-        <button type="button" id="closeButton" class="closeButton">
-          &times;
-        </button>
-      </form>
-
-      <form id="form" class="form" onsubmit="fillTable(event)">
-        <input type="text" placeholder="bidhaa" id="item" />
-        <input type="number" placeholder="kiasi" id="amount" />
-        <input type="number" placeholder="idadi" id="total" />
-        <button type="submit">&uarr;</button>
-      </form>
-
-      <div class="actions">
-        <button type="submit" id="addEntry" class="addEntry">Add Entry</button>
-        <button type="submit" id="delEntry" class="delEntry">
-          Delete Entry
-        </button>
-        <button type="submit" id="history" class="history" disabled>
-          History
-        </button>
+<body>
+  <header id="header">
+    <h1>MAUZO</h1>
+    <div class="themes">
+      <button class="toggleThemes">
+        <i class="bx bx-adjust icon"></i>
+        <i class="bx bx-chevron-down icon" id="chevyDown"></i>
+        <i class="bx bx-chevron-up icon" id="chevyUp"></i>
+      </button>
+      <div class="themeCategories">
+        <button class="ThemeIcon" id="auto"><i class='bx bx-desktop'></i>Auto</button><hr>
+        <button class="ThemeIcon" id="light"><i class='bx bx-sun'></i> Light</button>
+        <hr>
+        <button class="ThemeIcon" id="dark"><i class='bx bx-moon'></i> Dark</button>
       </div>
-    </main>
-    <footer>2024&copy; Bax Lly</footer>
+    </div>
 
-    <script src="./index.js"></script>
-  </body>
+  </header>
+
+  <main id="main">
+    <h1 id="heroText"></h1>
+    <table id="table">
+      <tr>
+        <th>Entry</th>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Total</th>
+      </tr>
+    </table>
+
+    <form class="deleteMessage" id="deleteMessage">
+      <label for="entryId">Enter entry to Delete:</label>
+      <input type="number" placeholder="Number" id="entryId" />
+      <button type="submit" id="entryChoice">Delete</button>
+      <button type="button" id="closeButton" class="closeButton">
+        &times;
+      </button>
+    </form>
+
+    <form id="form" class="form" onsubmit="fillTable(event)">
+      <input type="text" placeholder="bidhaa" id="item" />
+      <input type="number" placeholder="kiasi" id="amount" />
+      <input type="number" placeholder="idadi" id="total" />
+      <button type="submit" id="fill">&uarr;</button>
+    </form>
+
+    <div class="actions">
+      <button type="submit" id="addEntry" class="addEntry">Add Entry</button>
+      <button type="submit" id="delEntry" class="delEntry">
+        Delete Entry
+      </button>
+      <button type="submit" id="history" class="history" disabled>
+        History
+      </button>
+    </div>
+  </main>
+  <footer>2024&copy; Bax Lly</footer>
+
+  <script src="./index.js"></script>
+</body>
+
 </html>
