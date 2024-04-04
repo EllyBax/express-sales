@@ -21,7 +21,9 @@ const currentDate = new Date();
 
 //top margin due to fixed header
 document.addEventListener("DOMContentLoaded", () => {
+  let footerHeight = document.querySelector("footer").scrollHeight;
   let headerHeight = header.scrollHeight;
+  main.style.marginBottom = `${footerHeight + 8}px`;
   main.style.marginTop = `${headerHeight + 16}px`;
 });
 
@@ -102,7 +104,8 @@ function fillTable(event) {
 
   // Check if any of the inputs are empty or not a number
   if (!totalValue || !itemValue || !amountValue) {
-    displayError('Err: "Can\'t log empty field"', main);
+    displayError('Err: "Fill all fields"', main);
+    form.style.display = "none";
   } else {
     // Proceed with creating the table row if there's no error
     const tr = document.createElement("tr");
@@ -142,7 +145,9 @@ function displayError(errorMessage, parentElement) {
     <div class="errDiv">
       <h1>${errorMessage}</h1>
     </div>`;
-  parentElement.appendChild(errDiv);
+  parentElement.appendChild(errDiv); // Append errDiv to the parentElement first
+  errDiv.scrollIntoView({ behavior: "smooth" }); // Now scrollIntoView will work
+
   setTimeout(() => {
     errDiv.style.opacity = "0";
     errDiv.style.transition = "all 1s ease-in-out";
@@ -207,3 +212,44 @@ function changeTheme(theme) {
   console.log(`theme switching to ${theme}`);
   document.querySelector("html").classList = theme;
 }
+
+const actionsDiv = document.querySelector(".actions");
+document.addEventListener("DOMContentLoaded", function () {
+  const fabButton = document.getElementById("fabButton");
+  const bookAddIcon = fabButton.querySelector(".bx-book-add");
+  const xIcon = fabButton.querySelector(".bx-x");
+  const actionsDiv = document.querySelector(".actions");
+  // Initial state of actions div and fab button
+  actionsDiv.style.display = "none";
+  bookAddIcon.style.display = "inline-block"; // Show book-add icon
+  xIcon.style.display = "none"; // Hide 'x' icon
+
+  // Function to toggle the display of the actions div and switch icons
+  function toggleActionsDiv() {
+    if (actionsDiv.style.display === "none") {
+      actionsDiv.style.transition = "opacity 0.5s ease";
+      actionsDiv.style.opacity = "1";
+      actionsDiv.style.display = "flex";
+      bookAddIcon.style.display = "none"; // Hide book-add icon
+      xIcon.style.display = "inline-block"; // Show 'x' icon
+      actionsDiv.scrollIntoView({ behavior: "smooth" }); // Scroll actionsDiv into view smoothly
+    } else {
+      // Hide actionsDiv smoothly
+      actionsDiv.style.transition = "opacity 0.5s ease";
+      actionsDiv.style.opacity = "0";
+
+      // Hide icons after the transition
+      setTimeout(() => {
+        actionsDiv.style.display = "none";
+        bookAddIcon.style.display = "inline-block"; // Show book-add icon
+        xIcon.style.display = "none"; // Hide 'x' icon
+      }, 500);
+    }
+  }
+
+  let footerHeight = document.querySelector("footer").scrollHeight;
+  fabButton.style.bottom = `${footerHeight + 5}px`;
+
+  // Attach the toggle function to the click event of the fabButton
+  fabButton.addEventListener("click", toggleActionsDiv);
+});
